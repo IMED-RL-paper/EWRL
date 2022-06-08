@@ -1,9 +1,9 @@
 from learners.discreteMDPs.utils import *
 
 def build_opti(name, env, nS, nA):
-    if ("2-rooms" in name):
+    if ("2-room" in name):
         return  Opti_911_2room(env)
-    elif ("4-rooms" in name):
+    elif ("4-room" in name):
         return  Opti_77_4room(env)
     #elif ("RiverSwim" in name):
     #    return Opti_swimmer(env)
