@@ -5,7 +5,6 @@ import environments.RegisterEnvironments as bW
 import learners.discreteMDPs.UCRL3 as le
 import learners.discreteMDPs.PSRL as psrl
 import learners.discreteMDPs.IRL as IRL
-import learners.discreteMDPs.MEDRL as MEDRL
 import learners.Generic.Qlearning as ql
 import learners.Generic.Random as random
 
@@ -34,7 +33,6 @@ nS = env.observation_space.n
 nA = env.action_space.n
 delta=0.05
 agents.append(([IRL.IRL, {"nbr_states":nS, "nbr_actions":nA}]))
-# agents.append(([MEDRL.MEDRL, {"nbr_states":nS, "nbr_actions":nA}]))
 agents.append( [psrl.PSRL, {"nS":nS, "nA":nA, "delta":delta}])
 # agents.append( [random.Random, {"env": env.env}])
 
@@ -51,20 +49,4 @@ runLargeMulticoreExperiment(env, agents, timeHorizon=5000, nbReplicates=256)
 #######################
 #files =plR.search_dump_cumRegretfiles("RiverSwim-6-v0")
 #plR.plot_results_from_dump(files, 500)
-#
-# import numpy as np
-#
-# a = np.zeros((2, 3, 4))
-# amin = np.zeros(2)
-# for i in range(2):
-#     amin[i] = np.inf
-#     for j in range(3):
-#         for k in range(4):
-#             a[i, j, k] = np.random.rand()
-#             if (a[i, j, k] > 0.5):
-#                 amin[i] = min(amin[i], a[i, j, k])
-# print(a)
-# print(a > 0.5)
-# b = np.amin(a, axis=(1, 2), where=a > 0.5, initial=np.inf)
-# print("min", b)
-# print("min", amin)
+
